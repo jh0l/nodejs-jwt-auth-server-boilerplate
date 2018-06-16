@@ -1,0 +1,30 @@
+{
+  "low-level request handling": {
+    "contains": {
+      "HTTP Module": {
+        "description": "handle HTTP requests"
+      }
+    }
+  },
+  "Routing, Server Logic": {
+    "contains": {
+      "Express": "parse response + routing",
+      "Morgan": "Logging",
+      "BodyParser": "Help parse incoming HTTP requests"
+    }
+  },
+  "Database": {
+    "contains": {
+      "Mongoose": "Working with MongoDB",
+      "MongoDB": "Storing Data"
+    }
+  },
+  "Authentication": {
+    "contains": {
+      "Passport.js": "Authenticating users",
+      "Passport-Local": "Authenticating users with a username/password",
+      "Passport-JWT": "Authenticating users with a JWT",
+      "Bcrypt-Nodejs": "Storing a user's password safely"
+    }
+  }
+}
