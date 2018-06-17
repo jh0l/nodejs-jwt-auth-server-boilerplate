@@ -8,7 +8,12 @@ const LocalStrategy = require("passport-local");
 // Create local (login) strategy
 // Setup options for local strategy
 const localOptions = { usernameField: "email" };
-const localLogin = LocalStrategy(localOptions, function(email, password, done) {
+// strategies are constructors, this is important. (Why do they do this?)
+const localLogin = new LocalStrategy(localOptions, function(
+  email,
+  password,
+  done
+) {
   // Verify this username and password, call done with the user
   // If it is the correct username and password
   // Otherwise, call done with false
@@ -38,7 +43,7 @@ const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader("authorization"),
   secretOrKey: config.secret
 };
-const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+const jwtSignup = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
   // If it does, call 'done' with that user object
   // otherwise, call done without a user object
@@ -57,5 +62,5 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 });
 
 // Tell passport to use strategies
-passport.use(jwtLogin);
+passport.use(jwtSignup);
 passport.use(localLogin);
